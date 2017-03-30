@@ -1,47 +1,5 @@
-describe('Task Spec', () => {
-    let task1 = require('../lib/task1');
-    let task2 = require('../lib/task2');
-
-    it('should get student info by strStu', () => {
-        let inputStrStu = 'name,001,汉族,1,chinese:120,math:120,english:120,program:110';
-        let expectResult = {
-            name: 'name',
-            stuNo: '001',
-            nation: '汉族',
-            classNum: '1',
-            math: 120,
-            chinese: 120,
-            english: 120,
-            program: 110
-        };
-        expect(task1.getStudentInfo(inputStrStu)).toEqual(expectResult);
-    });
-
-    it('should count student score', () => {
-        let inputStu = {
-            name: 'name',
-            stuNo: '001',
-            nation: '汉族',
-            classNum: '1',
-            math: 120,
-            chinese: 110,
-            english: 120,
-            program: 110
-        };
-        let expectResult = {
-            name: 'name',
-            stuNo: '001',
-            nation: '汉族',
-            classNum: '1',
-            math: 120,
-            chinese: 110,
-            english: 120,
-            program: 110,
-            aveScore: 115,
-            totalScore: 460
-        };
-        expect(task1.countStudentScore(inputStu)).toEqual(expectResult);
-    });
+describe('Clazz Spec', () => {
+    const handleClazz  = require('../lib/handleClazz');
 
     it('should count class ave and mid score', () => {
         let inputClass = {
@@ -106,7 +64,7 @@ describe('Task Spec', () => {
             classAveScore: 430,
             classMidScore: 430
         };
-        expect(task1.countClassScore(inputClass)).toEqual(expectResult);
+        expect(handleClazz.countClassScore(inputClass)).toEqual(expectResult);
     });
 
     it('should update clazzs when given a student and class is exist', () => {
@@ -159,7 +117,7 @@ describe('Task Spec', () => {
         }];
         ;
 
-        expect(task1.updateClazzs(sourceClass, testStudent)).toEqual(expectResult);
+        expect(handleClazz.updateClazzs(sourceClass, testStudent)).toEqual(expectResult);
     });
 
     it('should update clazzs when given a student and class is not exist', () => {
@@ -184,7 +142,7 @@ describe('Task Spec', () => {
             classMidScore: 460
         }];
 
-        expect(task1.updateClazzs(sourceClass, testStudent)).toEqual(expectResult);
+        expect(handleClazz.updateClazzs(sourceClass, testStudent)).toEqual(expectResult);
     });
 
     it('should update clazzs when given a student is already in clazz', () => {
@@ -228,15 +186,9 @@ describe('Task Spec', () => {
             classMidScore: 400
         }];
 
-        expect(task1.updateClazzs(sourceClass, updateStudent)).toEqual(expectResult);
+        expect(handleClazz.updateClazzs(sourceClass, updateStudent)).toEqual(expectResult);
     });
 
-    it('should get student no by strStuNo', () => {
-        let inputStrStuNo = '001,002,004';
-        let expectResult = ['001', '002', '004'];
-
-        expect(task2.getStudentNo(inputStrStuNo)).toEqual(expectResult);
-    });
 
     it('should getClassInfo by StuInfo', () => {
         let inputStrStuNo = ['001'];
@@ -271,7 +223,7 @@ describe('Task Spec', () => {
             classAveScore: 460,
             classMidScore: 460
         }];
-        expect(task2.getClassInfo(inputClazzs, inputStrStuNo)).toEqual(expectResult);
+        expect(handleClazz.getClassInfo(inputClazzs, inputStrStuNo)).toEqual(expectResult);
 
     });
 
@@ -313,8 +265,7 @@ name|120|110|120|110|115|460
 ==============================
 全班平均分：0.00
 全班中位分：0.00`;
-        expect(task2.getPrintInfo(inputClazzs)).toEqual(expectResult);
+        expect(handleClazz.getPrintInfo(inputClazzs)).toEqual(expectResult);
 
     });
-
 });
