@@ -1,6 +1,24 @@
 describe('Clazz Spec', () => {
     const handleClazz  = require('../lib/handleClazz');
 
+    it('should get mid num when arr is only one element', () =>{
+        let testArr = [100];
+        let expectResult  = 100;
+        expect(handleClazz.getMidScore(testArr)).toEqual(expectResult);
+    });
+
+    it('should get mid num when arr count is even', () =>{
+        let testArr = [100,200];
+        let expectResult  = 150;
+        expect(handleClazz.getMidScore(testArr)).toEqual(expectResult);
+    });
+
+    it('should get mid num when arr count is old', () =>{
+        let testArr = [100,200,300];
+        let expectResult  = 200;
+        expect(handleClazz.getMidScore(testArr)).toEqual(expectResult);
+    });
+
     it('should count class ave and mid score', () => {
         let inputClass = {
             classId: 1,
