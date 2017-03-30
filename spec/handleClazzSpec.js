@@ -1,21 +1,21 @@
 describe('Clazz Spec', () => {
-    const handleClazz  = require('../lib/handleClazz');
+    const handleClazz = require('../lib/handleClazz');
 
-    it('should get mid num when arr is only one element', () =>{
+    it('should get mid num when arr is only one element', () => {
         let testArr = [100];
-        let expectResult  = 100;
+        let expectResult = 100;
         expect(handleClazz.getMidScore(testArr)).toEqual(expectResult);
     });
 
-    it('should get mid num when arr count is even', () =>{
-        let testArr = [100,200];
-        let expectResult  = 150;
+    it('should get mid num when arr count is even', () => {
+        let testArr = [100, 200];
+        let expectResult = 150;
         expect(handleClazz.getMidScore(testArr)).toEqual(expectResult);
     });
 
-    it('should get mid num when arr count is old', () =>{
-        let testArr = [100,200,300];
-        let expectResult  = 200;
+    it('should get mid num when arr count is old', () => {
+        let testArr = [100, 200, 300];
+        let expectResult = 200;
         expect(handleClazz.getMidScore(testArr)).toEqual(expectResult);
     });
 
@@ -207,7 +207,6 @@ describe('Clazz Spec', () => {
         expect(handleClazz.updateClazzs(sourceClass, updateStudent)).toEqual(expectResult);
     });
 
-
     it('should getClassInfo by StuInfo', () => {
         let inputStrStuNo = ['001'];
         let testStudent = {
@@ -264,7 +263,7 @@ describe('Clazz Spec', () => {
             stuScore: [testStudent],
             classAveScore: 460,
             classMidScore: 460
-        },{
+        }, {
             classNum: '2',
             stuScore: [],
             classAveScore: 0,
