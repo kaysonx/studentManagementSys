@@ -79,10 +79,10 @@ describe('Clazz Spec', () => {
                     totalScore: 460
                 }
             ],
-            classAveScore: 430,
+            classAverageScore: 430,
             classMidScore: 430
         };
-        expect(handleClazz.countClassScore(inputClass)).toEqual(expectResult);
+        expect(handleClazz.updateClassScore(inputClass)).toEqual(expectResult);
     });
 
     it('should update clazzs when given a student and class is exist', () => {
@@ -113,24 +113,24 @@ describe('Clazz Spec', () => {
         let sourceClass = [{
             classNum: '1',
             stuScore: [existStudent],
-            classAveScore: 0,
+            classAverageScore: 0,
             classMidScore: 0
         }, {
             classNum: '2',
             stuScore: [],
-            classAveScore: 0,
+            classAverageScore: 0,
             classMidScore: 0
         }];
 
         let expectResult = [{
             classNum: '1',
             stuScore: [existStudent, testStudent],
-            classAveScore: 460,
+            classAverageScore: 460,
             classMidScore: 460
         }, {
             classNum: '2',
             stuScore: [],
-            classAveScore: 0,
+            classAverageScore: 0,
             classMidScore: 0
         }];
         ;
@@ -138,7 +138,7 @@ describe('Clazz Spec', () => {
         expect(handleClazz.updateClazzs(sourceClass, testStudent)).toEqual(expectResult);
     });
 
-    it('should updat e clazzs when given a student and class is not exist', () => {
+    it('should update clazzs when given a student and class is not exist', () => {
         let testStudent = {
             name: 'name',
             stuNo: '001',
@@ -156,7 +156,7 @@ describe('Clazz Spec', () => {
         let expectResult = [{
             classNum: '1',
             stuScore: [testStudent],
-            classAveScore: 460,
+            classAverageScore: 460,
             classMidScore: 460
         }];
 
@@ -192,7 +192,7 @@ describe('Clazz Spec', () => {
         let sourceClass = [{
             classNum: '1',
             stuScore: [testStudent],
-            classAveScore: 460,
+            classAverageScore: 460,
             classMidScore: 460
         }];
 
@@ -200,7 +200,7 @@ describe('Clazz Spec', () => {
         let expectResult = [{
             classNum: '1',
             stuScore: [updateStudent],
-            classAveScore: 400,
+            classAverageScore: 400,
             classMidScore: 400
         }];
 
@@ -225,19 +225,19 @@ describe('Clazz Spec', () => {
         let inputClazzs = [{
             classNum: '1',
             stuScore: [testStudent],
-            classAveScore: 460,
+            classAverageScore: 460,
             classMidScore: 460
         }, {
             classNum: '2',
             stuScore: [],
-            classAveScore: 0,
+            classAverageScore: 0,
             classMidScore: 0
         }];
 
         let expectResult = [{
             classNum: '1',
             stuScore: [testStudent],
-            classAveScore: 460,
+            classAverageScore: 460,
             classMidScore: 460
         }];
         expect(handleClazz.getClassInfo(inputClazzs, inputStrStuNo)).toEqual(expectResult);
@@ -261,12 +261,12 @@ describe('Clazz Spec', () => {
         let inputClazzs = [{
             classNum: '1',
             stuScore: [testStudent],
-            classAveScore: 460,
+            classAverageScore: 460,
             classMidScore: 460
         }, {
             classNum: '2',
             stuScore: [],
-            classAveScore: 0,
+            classAverageScore: 0,
             classMidScore: 0
         }];
 
@@ -279,6 +279,7 @@ name|120|110|120|110|115|460
 全班中位分：460.00
 姓名|数学|语文|英语|编程|平均分|总分
 ==============================
+
 ==============================
 全班平均分：0.00
 全班中位分：0.00`;
