@@ -138,7 +138,7 @@ describe('Clazz Spec', () => {
         expect(handleClazz.updateClazzs(sourceClass, testStudent)).toEqual(expectResult);
     });
 
-    it('should update clazzs when given a student and class is not exist', () => {
+    it('should updat e clazzs when given a student and class is not exist', () => {
         let testStudent = {
             name: 'name',
             stuNo: '001',
