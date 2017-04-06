@@ -11,11 +11,11 @@
 <form action="/print" method="post">
     <div>
         <div>
-            <%if(hintInfo !== ''){%>
-                <span><%=hintInfo%></span>
-            <%}else{%>
+            <% if(hintInfo !== ''){ %>
+                <span><%= hintInfo %></span>
+            <% }else{ %>
                 <span>请输入要打印的学生的学号（格式：学号，学号,...）</span>
-            <%}%>
+            <% } %>
         </div>
         <div>
             <input type="text" name="stuNos">

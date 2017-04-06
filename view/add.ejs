@@ -10,9 +10,7 @@
 <body>
 
 <div>
-    <%if(hintInfo){%>
-        <h4><%=hintInfo%></h4>
-    <%}%>
+    <h4><%= hintInfo %></h4>
 </div>
 <form action="/add" method="post">
     <div>
@@ -30,6 +28,8 @@
         <input type="submit" value="添加学生">
     </div>
 </form>
-
+<div>
+    <a href="/">返回首页</a>
+</div>
 </body>
 </html>
