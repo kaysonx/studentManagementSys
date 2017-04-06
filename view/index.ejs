@@ -9,7 +9,13 @@
 </head>
 <body>
 <div>
-    <p><%= data %></p>
+    <p>
+    <ul style="list-style: none">
+        <% data.split('\n').map(item => { %>
+        <li><%= item %></li>
+        <% }) %>
+    </ul>
+    </p>
     <form action="/" method="post">
         <input type="text" name="input" id="inputData">
         <input type="submit">
