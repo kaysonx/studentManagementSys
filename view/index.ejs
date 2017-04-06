@@ -6,19 +6,27 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>student management</title>
+
+    <style>
+        li{
+            list-style: none;
+        }
+    </style>
 </head>
 <body>
 <div>
     <p>
-    <ul style="list-style: none">
+    <ul>
         <% data.split('\n').map(item => { %>
         <li><%= item %></li>
         <% }) %>
     </ul>
     </p>
     <form action="/" method="post">
-        <input type="text" name="input" id="inputData">
-        <input type="submit">
+        <ul>
+            <li><input type="text" name="input" id="inputData"></li>
+            <li><input type="submit"></li>
+        </ul>
     </form>
 </div>
 </body>
