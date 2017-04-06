@@ -6,28 +6,30 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <%- include('./template/header') %>
 </head>
 <body>
-<div>
+<div style="text-align: center;">
     <div>
-    <% if(clazzInfo){ %>
-        <p>
-        <ul>
-            <%clazzInfo.split('\n').map(item => { %>
-            <li>
-                <%= item %>
-            </li>
+        <div class="list-group">
+        <% if(clazzInfo){ %>
+            <% clazzInfo.split('\n').map((item, index) => { %>
+                <% if(index === 0){ %>
+                     <a href="#" class="list-group-item active"><%= item %></a>
+                <% }else{ %>
+                     <a href="#" class="list-group-item"><%= item %></a>
+                <% } %>
             <% }) %>
-        </ul>
-        </p>
-    <% }else{ %>
-    <span>没有需要显示的数据！</span>
-    <% } %>
+        <% }else{ %>
+            <a href="#" class="list-group-item">没有需要显示的数据！</a>
+        <% } %>
+        </div>
     </div>
 
     <div>
-        <a href="/">返回首页</a>
+        <a href="/" class="btn btn-info">返回首页</a>
     </div>
 </div>
+<%- include('./template/footer') %>
 </body>
 </html>

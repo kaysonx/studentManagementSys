@@ -6,30 +6,38 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Add Student</title>
+    <%- include('./template/header') %>
+    <style>
+        div{
+            margin-bottom: 10px;
+        }
+    </style>
+
 </head>
 <body>
-
-<div>
-    <h4><%= hintInfo %></h4>
-</div>
-<form action="/add" method="post">
+<div style="text-align: center">
     <div>
-        <div><span>姓名：</span><input type="text" name="name"></div>
-        <div><span>学号：</span><input type="text" name="stuNo"></div>
-        <div><span>名族：</span><input type="text" name="nation"></div>
-        <div><span>班级：</span><input type="text" name="classNum"></div>
-        <div><span>数学：</span><input type="text" name="math"></div>
-        <div><span>语文：</span><input type="text" name="chinese"></div>
-        <div><span>英语：</span><input type="text" name="english"></div>
-        <div><span>编程：</span><input type="text" name="program"></div>
+        <div class="alert alert-danger" role="alert"><%= hintInfo %></div>
     </div>
 
-    <div>
-        <input type="submit" value="添加学生">
-    </div>
-</form>
-<div>
-    <a href="/">返回首页</a>
+    <form action="/add" method="post" class="form-inline">
+        <div>
+            <div><span>姓名：</span><input type="text" class="form-control" name="name"></div>
+            <div><span>学号：</span><input type="text" class="form-control" name="stuNo"></div>
+            <div><span>名族：</span><input type="text" class="form-control" name="nation"></div>
+            <div><span>班级：</span><input type="text" class="form-control" name="classNum"></div>
+            <div><span>数学：</span><input type="text" class="form-control" name="math"></div>
+            <div><span>语文：</span><input type="text" class="form-control" name="chinese"></div>
+            <div><span>英语：</span><input type="text" class="form-control" name="english"></div>
+            <div><span>编程：</span><input type="text" class="form-control" name="program"></div>
+        </div>
+
+        <div>
+            <input type="submit" class="form-control btn btn-primary" value="添加学生" style="display: inline-block">
+            <a href="/" class="btn btn-info">返回首页</a>
+        </div>
+    </form>
 </div>
+<%- include('./template/footer') %>
 </body>
 </html>

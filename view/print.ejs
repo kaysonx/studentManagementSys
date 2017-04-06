@@ -6,29 +6,30 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Add Student</title>
+    <%- include('./template/header') %>
 </head>
 <body>
+<div style="text-align: center;">
 <form action="/print" method="post">
     <div>
         <div>
             <% if(hintInfo !== ''){ %>
-                <span><%= hintInfo %></span>
+             <div class="alert alert-danger" role="alert"><%= hintInfo %></div>
             <% }else{ %>
-                <span>请输入要打印的学生的学号（格式：学号，学号,...）</span>
+            <div class="alert alert-info" role="alert">请输入要打印的学生的学号（格式：学号，学号,...）</div>
             <% } %>
         </div>
         <div>
-            <input type="text" name="stuNos">
+            <input type="text" class="form-control" name="stuNos">
         </div>
     </div>
 
-    <div>
-        <input type="submit" value="查询成绩">
-    </div>
-    <div>
-        <a href="/">返回首页</a>
+    <div style="margin-top: 10px;">
+        <input  class="btn btn-primary" type="submit" value="查询成绩" style="display: inline-block">
+        <a href="/" class="btn btn-info">返回首页</a>
     </div>
 </form>
-
+</div>
+<%- include('./template/footer') %>
 </body>
 </html>
