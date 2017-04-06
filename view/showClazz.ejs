@@ -10,10 +10,10 @@
 <body>
 <div>
     <div>
-    <% if(printInfo){ %>
+    <% if(clazzInfo){ %>
         <p>
         <ul>
-            <%printInfo.split('\n').map(item => { %>
+            <%clazzInfo.split('\n').map(item => { %>
             <li>
                 <%= item %>
             </li>
