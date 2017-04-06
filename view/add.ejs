@@ -17,7 +17,13 @@
 <body>
 <div style="text-align: center">
     <div>
-        <div class="alert alert-danger" role="alert"><%= hintInfo %></div>
+        <%if(hintInfo !== ''){%>
+             <div class="alert alert-danger" role="alert"><%= hintInfo %></div>
+        <%}else{%>
+              <div class="alert alert-info" role="alert">请输入学生信息进行添加</div>
+        <%}%>
+
+
     </div>
 
     <form action="/add" method="post" class="form-inline">
