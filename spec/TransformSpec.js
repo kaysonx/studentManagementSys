@@ -1,5 +1,5 @@
 describe('Transform Spec', () => {
-    const Transform = require('../lib/Transform');
+    const Transform = require('../lib/util/Transform');
     it('should get student no by strStuNo', () => {
         let inputStrStuNo = '001,002,004';
         let expectResult = ['001', '002', '004'];

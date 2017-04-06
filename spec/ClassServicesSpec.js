@@ -1,7 +1,7 @@
 describe('ClassManagement Spec', () => {
-    const ClassServices = require('../lib/ClassServices');
-    const Student = require('../lib/Student');
-    const Clazz = require('../lib/Clazz');
+    const ClassServices = require('../lib/services/ClassServices');
+    const Student = require('../lib/model/Student');
+    const Clazz = require('../lib/model/Clazz');
     it('should add student to clazz when given a student & class is exist', () => {
         let classServices = new ClassServices();
         let testStudent = new Student('name', '001', '汉族', '1', 120, 110, 120, 110);

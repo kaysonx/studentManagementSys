@@ -8,26 +8,24 @@
     <title>student management</title>
 
     <style>
-        li{
+        li {
             list-style: none;
         }
     </style>
 </head>
 <body>
 <div>
-    <p>
-    <ul>
-        <% data.split('\n').map(item => { %>
-        <li><%= item %></li>
-        <% }) %>
-    </ul>
-    </p>
-    <form action="/" method="post">
-        <ul>
-            <li><input type="text" name="input" id="inputData"></li>
-            <li><input type="submit"></li>
-        </ul>
-    </form>
+    <div>
+        <span><%=data%></span>
+    </div>
+    <div>请选择功能：</div>
+    <div>
+        <ol>
+            <li><a href="/add">添加学生</a></li>
+            <li><a href="/print">生成成绩单</a></li>
+            <li><a href="/quit">退出</a></li>
+        </ol>
+    </div>
 </div>
 </body>
 </html>

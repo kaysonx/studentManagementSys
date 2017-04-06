@@ -1,5 +1,5 @@
 describe('Clazz Spec', () => {
-    const Clazz = require('../lib/Clazz');
+    const Clazz = require('../lib/model/Clazz');
     it('should get mid num when arr is only one element', () => {
         let testArr = [100];
         let expectResult = 100;
