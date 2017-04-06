@@ -2,14 +2,19 @@
   "name": "08-cmd",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/webMain.js",
   "scripts": {
-    "test": "jasmine"
+    "test": "jasmine",
+    "start":"nodemon"
   },
   "author": "qspeng",
   "license": "MIT",
   "devDependencies": {
     "babel-preset-env": "^1.2.2",
     "babel-register": "^6.24.0"
+  },
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "express": "^4.15.2"
   }
 }
