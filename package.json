@@ -2,7 +2,7 @@
   "name": "08-cmd",
   "version": "1.0.0",
   "description": "",
-  "main": "lib/webMain.js",
+  "main": "lib/app.js",
   "scripts": {
     "test": "jasmine",
     "start": "nodemon"
