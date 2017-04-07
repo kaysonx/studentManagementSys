@@ -35,8 +35,8 @@
         </div>
 
         <div>
-            <input type="button" id="btnAdd" class="form-control btn btn-primary" value="添加学生"
-                   style="display: inline-block">
+            <button type="button" id="btnAdd" class="form-control btn btn-primary"
+                   style="display: inline-block">添加学生</button>
         </div>
     </form>
 </div>
@@ -46,20 +46,19 @@
     $(() => {
         $('#showHint').hide();
 
-        $('#btnAdd').click(() => {
-            let name = $('#name').val();
-            let stuNo = $('#stuNo').val();
-            let nation = $('#nation').val();
-            let classNum = $('#classNum').val();
-            let math = $('#math').val();
-            let chinese = $('#chinese').val();
-            let program = $('#program').val();
-            let english = $('#english').val();
-
-            const data = {name, stuNo, nation, classNum, math, chinese, program, english};
-            $.post('/student', data, handleAddSuccess);
-        });
+        $('#btnAdd').click(addClick);
     });
+    const addClick = () => {
+        let jsonData = {};
+        [...$("input[type='text']")].map(input => {
+            let key = $(input).attr('name');
+            let value = $(input).val();
+            return {
+                [key]:value
+            }
+        }).forEach(val => (Object.assign(jsonData,jsonData,val)))
+        $.post('/student', jsonData, handleAddSuccess);
+    }
 
     const handleAddSuccess = (res) => {
         let $showHint = $('#showHint');
