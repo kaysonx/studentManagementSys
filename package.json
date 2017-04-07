@@ -2,9 +2,10 @@
   "name": "08-cmd",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/app.js",
   "scripts": {
-    "test": "jasmine"
+    "test": "jasmine",
+    "start":"nodemon"
   },
   "author": "qspeng",
   "license": "MIT",
