@@ -10,26 +10,115 @@
 </head>
 <body>
 <div style="text-align: center;">
+    <%- include('./template/nav')%>
+    <div>
+        <div class="alert alert-info" id="showHint" role="alert">请输入要打印的学生的学号（格式：学号，学号,...）</div>
+    </div>
+
 <form action="/print" method="post">
     <div>
         <div>
-            <% if(hintInfo !== ''){ %>
-             <div class="alert alert-danger" role="alert"><%= hintInfo %></div>
-            <% }else{ %>
-            <div class="alert alert-info" role="alert">请输入要打印的学生的学号（格式：学号，学号,...）</div>
-            <% } %>
-        </div>
-        <div>
-            <input type="text" class="form-control" name="stuNos">
+            <input type="text" class="form-control" name="stuNos" id="stuNos" />
         </div>
     </div>
 
     <div style="margin-top: 10px;">
-        <input  class="btn btn-primary" type="submit" value="查询成绩" style="display: inline-block">
-        <a href="/" class="btn btn-info">返回首页</a>
+        <input  class="btn btn-primary" type="button" id="searchScore" value="查询成绩" style="display: inline-block">
+    </div>
+
+    <div id="showClasses">
+
     </div>
 </form>
 </div>
 <%- include('./template/footer') %>
+<script>
+    $(() => {
+        $('#searchScore').click(handleSearch);
+        loadAllClassInfo();
+    });
+
+    const loadAllClassInfo = () => {
+        const myRequest = new Request(`/class`);
+        const init = {
+            method:'GET',
+        }
+        myFetch(myRequest, init, handleClassSuccess, handleClassError)
+    }
+
+
+    const handleSearch = () => {
+        let stuNos = $('#stuNos').val();
+        console.log(stuNos);
+        if(!stuNos){
+            return;
+        }
+        const myRequest = new Request(`/print`);
+        const init = {
+            method:'POST',
+            headers:{
+                "Content-Type": "application/json",
+            },
+            body:JSON.stringify({stuNos:stuNos})
+        }
+        myFetch(myRequest, init, handleClassSuccess, handleClassError);
+    }
+
+    const myFetch = (request, init, success, error) => {
+        fetch(request,init).then((res) => {
+            if (res.ok) {
+                return res.json();
+            }
+            return Promise.reject(res.json());
+        }).then((data) => {
+            success(data);
+        }).catch((err) => {
+            error(err);
+        })
+    }
+
+    const handleClassSuccess = (data) => {
+        let tableStrs = `<h3>成绩单</h3>`;
+        data.clazzInfo.forEach(clazz => {
+            let tableStr = `<table class='table table-hover table-bordered'>`;
+            tableStr += ` <tr>
+                            <td>姓名</td>
+                            <td>数学</td>
+                            <td>英语</td>
+                            <td>语文</td>
+                            <td>编程</td>
+                            <td>总分</td>
+                            <td>平均分</td>
+                          </tr>`;
+            tableStr += clazz.stuScore.map(stu => (
+                `   <tr>
+                    <td>${stu.name}</td>
+                    <td>${stu.math}</td>
+                    <td>${stu.chinese}</td>
+                    <td>${stu.english}</td>
+                    <td>${stu.program}</td>
+                    <td>${stu.totalScore}</td>
+                    <td>${stu.aveScore}</td>
+                    </tr>`
+            ));
+            tableStr += `<tr>
+                            <td colspan="4">全班平均分：${clazz.classAverageScore.toFixed(2)}</td>
+                            <td colspan="3">全班中位分：${clazz.classMidScore.toFixed(2)}</td>
+                        </tr>`;
+            tableStr += `</table>`;
+            tableStrs += tableStr;
+        })
+        $('#showClasses').html(tableStrs);
+    }
+
+    const handleClassError = (err) => {
+        let $showHint = $('#showHint');
+        if($showHint.hasClass('alertInfo')){
+            $showHint.removeClass('alert-info');
+        }
+        $showHint.addClass('alert-danger').text('请按正确的格式输入要打印的学生的学号（格式：学号，学号,...）');
+    }
+
+</script>
 </body>
 </html>
