@@ -16,10 +16,8 @@
 </head>
 <body>
 <div style="text-align: center">
-    <%- include('./template/nav')%>
-
     <div>
-        <div class="alert alert-danger" id="showHint" role="alert"></div>
+        <div class="alert alert-danger" id="showHint" role="alert" style="display: none;"></div>
     </div>
 
     <form action="/add" method="post" class="form-inline">
@@ -44,8 +42,6 @@
 
 <script>
     $(() => {
-        $('#showHint').hide();
-
         $('#btnAdd').click(addClick);
     });
     const addClick = () => {

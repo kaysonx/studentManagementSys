@@ -1,2 +1,14 @@
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.js"></script>
+
+<script>
+    $(() => {
+        $('a').click(function(e){
+            let href = $(this).attr('href');
+            $('#innerContent').attr('src', href);
+            $('li').removeClass('active');
+            $(this).parent().addClass('active')
+            return false;
+        });
+    })
+</script>

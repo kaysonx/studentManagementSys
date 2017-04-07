@@ -10,7 +10,6 @@
 </head>
 <body>
 <div style="text-align: center;">
-    <%- include('./template/nav') %>
     <div>
         <div class="alert alert-info" id="showHint" role="alert">请输入要打印的学生的学号（格式：学号，学号,...）</div>
     </div>
@@ -39,11 +38,11 @@
     });
 
     const loadAllClassInfo = () => {
-        const myRequest = new Request(`/class`);
-        const init = {
+        const url = `/class`;
+        const initData = {
             method: 'GET',
         }
-        myFetch(myRequest, init, handleClassSuccess, handleClassError)
+        fetchUtil(url, initData, handleClassSuccess, handleClassError)
     }
 
 
@@ -52,19 +51,19 @@
         if (!stuNos) {
             return;
         }
-        const myRequest = new Request(`/print`);
-        const init = {
+        const url = `/print`;
+        const initData = {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({stuNos: stuNos})
         }
-        myFetch(myRequest, init, handleClassSuccess, handleClassError);
+        fetchUtil(url, initData, handleClassSuccess, handleClassError);
     }
 
-    const myFetch = (request, init, success, error) => {
-        fetch(request, init).then((res) => {
+    const fetchUtil = (url, initData, success, error) => {
+        fetch(url, initData).then((res) => {
             if (res.ok) {
                 return res.json();
             }
