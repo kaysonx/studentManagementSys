@@ -1,6 +1,9 @@
-# cmd-JS
-用JS实现一个简单学生成绩管理系统
+# studentManagementSys-JS
 
-### npm start启动项目
-### branch master:命令行版本
-### branch web-Sys:web版本
+### start project：
+```
+npm i -g nodemon
+npm start
+```
+### branch:master:cmd version
+### branch:web-Sys:web version
